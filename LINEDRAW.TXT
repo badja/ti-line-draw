@@ -1,0 +1,68 @@
+LineDraw v1.01
+==============
+by Badja <http://badja.calc.org> <badja@calc.org>
+14 July 2001
+
+Changes in Version 1.01
+-----------------------
+Version 1.01 fixes the problem that TI-83+ users had when sending
+LINEDEMO.8XP to their calculator.
+
+
+This archive contains a fast line-drawing routine and a line-clipping
+routine for the TI-83 and TI-83+ calculators. They could easily be
+adapted for other Z80 calculators.
+
+
+linedraw.inc
+------------
+Draws to the graph buffer a line between two points.
+
+lineclip.inc
+------------
+Draws to the graph buffer a line between two points. Parts of the line
+that are off-screen will be clipped. The following diagram shows the
+size and position of the 96 x 64 screen in relation to the entire field
+of specifiable points:
+
+-128 +---------------+-----------+---+
+     |               .           .   |
+     |               .           .   |
+     |               .           .   |
+     |               .           .   |
+     |               .           .   |
+     |               .           .   |
+     |               .           .   |
+   0 + - - - - - - - +-----------+ - +
+     |               |           |   |
+     |               | TI SCREEN |   |
+     |               |           |   |
+  63 + - - - - - - - +-----------+ - +
+     |               .           .   |
+     |               .           .   |
+     |               .           .   |
+ 127 +---------------+-----------+---+
+   -128              0          95  127
+
+
+The following files are in this archive:
+----------------------------------------
+linedraw.txt  This documentation
+linedraw.inc  Line drawing routine
+lineclip.inc  Line clipping and drawing routine
+linedemo.asm  Source code for demonstration program
+linedemo.83p  Ready-to-run program file for Ion on the TI-83
+linedemo.8xp  Ready-to-run program file for Ion on the TI-83+
+
+
+Details on both routines are given at the start of the .inc files. To
+use the line drawing routine, your program will need to contain the
+line:
+    #include "linedraw.inc"
+
+To use the line clipping and drawing routine, you will also need the
+line:
+    #include "lineclip.inc"
+      
+You may use these routines in your own programs, as long as you give me
+credit. Send any comments, ideas, or other feedback to badja@calc.org
